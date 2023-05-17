@@ -38,56 +38,22 @@ struct ContentView: View {
     }
     
     func generateListItem(item: WeatherInfo,screenWidth:CGFloat) -> some View {
-        let main = item.weather?.first?.main ?? ""
+        print("xxx",item)
         return ZStack {
             HStack {
                 VStack(alignment:.leading){
                     PlaceLabel(currentTheme: theme)
-                    InfoRow(currentTheme: theme)
+                    InfoRow(currentTheme: theme,info: item)
                 }
                 .frame(alignment: .topLeading)
                 .layoutPriority(1)
                 
                 
                 Divider()
-                    .frame(width:2,height: .infinity)
+                    .frame(width:2)
                     .background(.white)
                 
-                VStack{
-                    HStack{
-                        Text("Mon")
-                            .font(.system(size: 14))
-                            .foregroundColor(theme.textColor)
-                        
-                        Spacer()
-                        HStack {
-                            Text("More")
-                                .font(.system(size: 14))
-                                .foregroundColor(theme.textColor)
-                            
-                            Image(systemName: "arrow.right")
-                                .renderingMode(.template)
-                                .resizable()
-                                .foregroundColor(.white)
-                                .frame(width: 10, height: 10)
-                            
-                        }
-                    }
-                    .padding(EdgeInsets(top:0,leading: 3,bottom: 0,trailing: 3))
-                    
-                    VStack(spacing:7){
-                        Image("ic_cloud")
-                            .resizable()
-                            .renderingMode(.template)
-                            .foregroundColor(.white)
-                            .frame(width: 40, height: 40)
-                        
-                        Text("10/17")
-                            .font(.system(size: 16))
-                            .foregroundColor(theme.textColor)
-                    }
-                    .padding(EdgeInsets(top:15,leading: 0,bottom: 0,trailing: 0))
-                }
+                NextDay(currentTheme: theme)
             }
             .frame(maxWidth: .infinity,alignment: .leading)
             .padding(10)
@@ -133,8 +99,19 @@ struct PlaceLabel: View {
 
 struct InfoRow: View {
     var currentTheme:Theme
+    var info:WeatherInfo
+    
+    func getMaxTemp()->String{
+        guard let maxTemp = info.temp?.max, info.temp?.max != nil else {
+                    return ""
+                }
+        let celTemp = Int(maxTemp) - 273
+        return String(celTemp)
+    }
+    
     
     var body: some View {
+
         HStack(alignment:.bottom){
             VStack(spacing:7){
                 Image("ic_sun")
@@ -142,13 +119,15 @@ struct InfoRow: View {
                     .renderingMode(.template)
                     .foregroundColor(.white)
                     .frame(width: 40, height: 40)
-                Text("Sunny")
+                
+                                
+                Text( info.weather?.first?.main ?? "")
                     .font(.system(size: 16))
                     .foregroundColor(currentTheme.textColor)
             }
             .padding(5)
             VStack(spacing:7){
-                Text("14")
+                Text(getMaxTemp())
                     .font(.system(size: 33.5))
                     .foregroundColor(currentTheme.textColor)
                 Text("Sunny")
@@ -172,5 +151,47 @@ struct InfoRow: View {
             .padding(5)
         }
         .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 15))
+    }
+}
+
+struct NextDay: View {
+    var currentTheme:Theme
+
+    var body: some View {
+        VStack{
+            HStack{
+                Text("Mon")
+                    .font(.system(size: 14))
+                    .foregroundColor(currentTheme.textColor)
+                
+                Spacer()
+                HStack {
+                    Text("More")
+                        .font(.system(size: 14))
+                        .foregroundColor(currentTheme.textColor)
+                    
+                    Image(systemName: "arrow.right")
+                        .renderingMode(.template)
+                        .resizable()
+                        .foregroundColor(.white)
+                        .frame(width: 10, height: 10)
+                    
+                }
+            }
+            .padding(EdgeInsets(top:0,leading: 3,bottom: 0,trailing: 3))
+            
+            VStack(spacing:7){
+                Image("ic_cloud")
+                    .resizable()
+                    .renderingMode(.template)
+                    .foregroundColor(.white)
+                    .frame(width: 40, height: 40)
+                
+                Text("10/17")
+                    .font(.system(size: 16))
+                    .foregroundColor(currentTheme.textColor)
+            }
+            .padding(EdgeInsets(top:15,leading: 0,bottom: 0,trailing: 0))
+        }
     }
 }
