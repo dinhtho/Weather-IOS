@@ -13,30 +13,25 @@ struct MainPage<ViewModel:MainPageViewModelType>: View {
     
     
     var body: some View {
-        GeometryReader { geo in
+        NavigationView {
             VStack(spacing:5) {
-                Text("Weather")
-                    .frame(height:50)
-                    .font(.system(size: 20))
-                    .shadow(radius: 10)
-                    .background(theme.screenColor)
-                
                 ScrollView(.vertical) {
                     ForEach(viewModel.weatherInfos, id: \.id) { info in
-                        generateListItem(item: info,screenWidth:geo.size.width)
+                        NavigationLink(destination: WeatherDetail()) {
+                            generateListItem(item: info)
+                        }
                         Spacer().frame(height:20)
                     }
                     .onAppear() {
                         viewModel.getWeatherInfos()
                     }
                 }
-            }
-            .background(theme.screenColor)
+            }.navigationTitle("Weather")
+                .background(theme.screenColor)
         }
     }
     
-    func generateListItem(item: WeatherInfo,screenWidth:CGFloat) -> some View {
-        print("xxx",item)
+    func generateListItem(item: WeatherInfo) -> some View {
         return ZStack {
             HStack {
                 VStack(alignment:.leading){
