@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C5C002622A1219BA00DB994F /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C002612A1219BA00DB994F /* Theme.swift */; };
+		C5C002632A1219BA00DB994F /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C002612A1219BA00DB994F /* Theme.swift */; };
+		C5C002642A1219BA00DB994F /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C002612A1219BA00DB994F /* Theme.swift */; };
+		C5C002672A121AE300DB994F /* LightTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C002662A121AE300DB994F /* LightTheme.swift */; };
+		C5C002682A121AE300DB994F /* LightTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C002662A121AE300DB994F /* LightTheme.swift */; };
+		C5C002692A121AE300DB994F /* LightTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C002662A121AE300DB994F /* LightTheme.swift */; };
+		C5C0026C2A12265200DB994F /* Pacifico-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C5C0026B2A12265200DB994F /* Pacifico-Regular.ttf */; };
+		C5C002702A1357D100DB994F /* CommonAppBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C0026F2A1357D100DB994F /* CommonAppBar.swift */; };
 		C5D426352A0E12810055AA8C /* WeatherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D426342A0E12810055AA8C /* WeatherApp.swift */; };
 		C5D426372A0E12810055AA8C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D426362A0E12810055AA8C /* ContentView.swift */; };
 		C5D426392A0E12820055AA8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5D426382A0E12820055AA8C /* Assets.xcassets */; };
@@ -36,6 +44,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C5C002612A1219BA00DB994F /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		C5C002662A121AE300DB994F /* LightTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightTheme.swift; sourceTree = "<group>"; };
+		C5C0026B2A12265200DB994F /* Pacifico-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pacifico-Regular.ttf"; sourceTree = "<group>"; };
+		C5C0026D2A12273A00DB994F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C5C0026F2A1357D100DB994F /* CommonAppBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonAppBar.swift; sourceTree = "<group>"; };
 		C5D426312A0E12810055AA8C /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5D426342A0E12810055AA8C /* WeatherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherApp.swift; sourceTree = "<group>"; };
 		C5D426362A0E12810055AA8C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -75,6 +88,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C5C002652A121AB600DB994F /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				C5C002612A1219BA00DB994F /* Theme.swift */,
+				C5C002662A121AE300DB994F /* LightTheme.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		C5C0026A2A12261F00DB994F /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				C5C0026B2A12265200DB994F /* Pacifico-Regular.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		C5C0026E2A1357C200DB994F /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				C5C0026F2A1357D100DB994F /* CommonAppBar.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
 		C5D426282A0E12810055AA8C = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +136,10 @@
 		C5D426332A0E12810055AA8C /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				C5C0026E2A1357C200DB994F /* Component */,
+				C5C0026D2A12273A00DB994F /* Info.plist */,
+				C5C0026A2A12261F00DB994F /* Font */,
+				C5C002652A121AB600DB994F /* Theme */,
 				C5D426622A0E186D0055AA8C /* ApiService */,
 				C5D4265E2A0E137C0055AA8C /* Entities */,
 				C5D426342A0E12810055AA8C /* WeatherApp.swift */,
@@ -253,6 +295,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5C0026C2A12265200DB994F /* Pacifico-Regular.ttf in Resources */,
 				C5D4263C2A0E12820055AA8C /* Preview Assets.xcassets in Resources */,
 				C5D426392A0E12820055AA8C /* Assets.xcassets in Resources */,
 			);
@@ -279,9 +322,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5C002672A121AE300DB994F /* LightTheme.swift in Sources */,
 				C5D426372A0E12810055AA8C /* ContentView.swift in Sources */,
 				C5D426352A0E12810055AA8C /* WeatherApp.swift in Sources */,
+				C5C002622A1219BA00DB994F /* Theme.swift in Sources */,
 				C5D426642A0E18870055AA8C /* ApiService.swift in Sources */,
+				C5C002702A1357D100DB994F /* CommonAppBar.swift in Sources */,
 				C5D426602A0E13AC0055AA8C /* WeatherInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -290,7 +336,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5C002682A121AE300DB994F /* LightTheme.swift in Sources */,
 				C5D426462A0E12820055AA8C /* WeatherAppTests.swift in Sources */,
+				C5C002632A1219BA00DB994F /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +346,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5C002692A121AE300DB994F /* LightTheme.swift in Sources */,
+				C5C002642A1219BA00DB994F /* Theme.swift in Sources */,
 				C5D426502A0E12820055AA8C /* WeatherAppUITests.swift in Sources */,
 				C5D426522A0E12820055AA8C /* WeatherAppUITestsLaunchTests.swift in Sources */,
 			);
@@ -443,6 +493,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"WeatherApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WeatherApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -471,6 +522,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"WeatherApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WeatherApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
