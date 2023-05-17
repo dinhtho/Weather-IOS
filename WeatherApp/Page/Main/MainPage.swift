@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    @State var infos:[WeatherInfo] = [WeatherInfo]()
+struct MainPage<ViewModel:MainPageViewModelType>: View {
     @State var theme:Theme = LightTheme()
+    @ObservedObject var viewModel:ViewModel
     
     
     var body: some View {
@@ -22,14 +22,12 @@ struct ContentView: View {
                     .background(theme.screenColor)
                 
                 ScrollView(.vertical) {
-                    ForEach(infos, id: \.id) { info in
+                    ForEach(viewModel.weatherInfos, id: \.id) { info in
                         generateListItem(item: info,screenWidth:geo.size.width)
                         Spacer().frame(height:20)
                     }
                     .onAppear() {
-                        ApiService().loadData { (list) in
-                            self.infos = list!
-                        }
+                        viewModel.getWeatherInfos()
                     }
                 }
             }
@@ -71,7 +69,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        MainPage(viewModel:MainPageViewModel())
     }
 }
 
@@ -103,15 +101,15 @@ struct InfoRow: View {
     
     func getMaxTemp()->String{
         guard let maxTemp = info.temp?.max, info.temp?.max != nil else {
-                    return ""
-                }
+            return ""
+        }
         let celTemp = Int(maxTemp) - 273
         return String(celTemp)
     }
     
     
     var body: some View {
-
+        
         HStack(alignment:.bottom){
             VStack(spacing:7){
                 Image("ic_sun")
@@ -120,7 +118,7 @@ struct InfoRow: View {
                     .foregroundColor(.white)
                     .frame(width: 40, height: 40)
                 
-                                
+                
                 Text( info.weather?.first?.main ?? "")
                     .font(.system(size: 16))
                     .foregroundColor(currentTheme.textColor)
@@ -156,7 +154,7 @@ struct InfoRow: View {
 
 struct NextDay: View {
     var currentTheme:Theme
-
+    
     var body: some View {
         VStack{
             HStack{

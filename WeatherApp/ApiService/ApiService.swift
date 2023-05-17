@@ -9,6 +9,7 @@ import Foundation
 
 class ApiService : ObservableObject{
     //    @Published var books = [Book]()
+    
     @Published var count :Int = 0
     let link = "https://api.openweathermap.org/data/2.5/forecast/daily?&cnt=7&appid=60c6fbeb4b93ac653c492ba806fc346d&q=hanoi"
     
