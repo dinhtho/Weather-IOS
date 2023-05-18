@@ -17,7 +17,7 @@ struct MainPage<ViewModel:MainPageViewModelType>: View {
             VStack(spacing:5) {
                 ScrollView(.vertical) {
                     ForEach(viewModel.weatherInfos, id: \.id) { info in
-                        NavigationLink(destination: WeatherDetail()) {
+                        NavigationLink(destination: WeatherDetailView()) {
                             generateListItem(item: info)
                         }
                         Spacer().frame(height:20)
